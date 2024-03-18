@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shanti&display=swap');
+
+* {
+   font-family: 'Roboto', sans-serif;
+   font-optical-sizing: auto;
+}
+
+:root{
+  --white-color: #DCE5FF;
+  --yellow: #fcc729;
+  --blue-real-color: #337def;
+  --blue-dark-color: #104c91;
+  --cream-color: #FFFDD0;
+  --gray-color: #455073;
+}
+
+
+html,
+body {
+   min-height: 100%;
+   min-width: 100%;
+   background-color: var(--cream-color);
+}
+
+
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
