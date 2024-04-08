@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeaderBarComponent } from './shared/components/header-bar/header-bar.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
+import { HomeModule } from './modules/home/home.module';
+import { DetailsModule } from './modules/details/details.module';
 
 const routes: Routes = [
   {
@@ -8,12 +10,18 @@ const routes: Routes = [
     loadChildren: () => import('./modules/login/login.module').then((m) => m.LoginModule),
  },
  {
-    component: HeaderBarComponent,
+    component: LayoutComponent,
     path: '',
-    loadChildren: () => import('./modules/home/home.module').then((m) => m.HomeModule),
+    children: [{
+      path: '',
+      loadChildren: () => import('./modules/home/home.module').then((m) => HomeModule),
+    },{
+      path: 'details',
+      loadChildren: () => import('./modules/details/details.module').then((m) => DetailsModule),
+    }]
  },
  {
-    component: HeaderBarComponent,
+    component: LayoutComponent,
     path: 'details',
     loadChildren: () =>
        import('./modules/details/details.module').then((m) => m.DetailsModule),

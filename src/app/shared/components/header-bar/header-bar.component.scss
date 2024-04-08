@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Romanesco&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Romanesco&family=Stick+No+Bills:wght@200..800&display=swap');
+
+header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  background-color: var(--blue-dark-color);
+  color: var(--cream-color)
+}
+
+.logo{
+  padding-left: 0.5rem;
+  display: block;
+  width: 25%;
+  h3{
+    font-style: italic;
+    font-family: "Stick No Bills", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  span{
+    font-weight: 400;
+    font-size: 2rem;
+    font-family: "Glass Antiqua", cursive;
+    padding-left: 2.5rem;
+    display: block;
+    color: var(--white-color);
+  }
+}
+
+.input-area{
+  width: 30%;
+  input{
+    height: 3rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 1rem;
+    border: 1px solid var(--cream-color);
+    outline: none;
+    background-color: var(--cream-color);
+    color: var(--blue-dark-color);
+    position: relative;
+  }
+
+  .bi-search{
+    position: absolute;
+    color: var(--blue-dark-color);
+    right: 37%;
+    top: 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  .bi-search:hover{
+    cursor: pointer;
+    color: var(--blue-real-color);
+  }
+
+}
+
+.login-area{
+  width: 25%;
+
+  > div{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    > p{
+      margin-bottom: 0;
+    }
+    > a{
+      color: var(--cream-color);
+    }
+    > img{
+      width: 15%;
+    }
+  }
+
+}
+
+.btn-logout{
+  padding: 0.4rem;
+  border-radius: 10%;
+  background-color: #000;
+  color: var(--cream-color);
+  font-weight: 500;
+  border: none;
+
+  &:hover{
+    transition: 0.2s;
+    color: #d4d3b6;
+  }
+
+  > i {
+    margin-right: 0.5rem;
+  }
+
+}
+
+
+
+
+

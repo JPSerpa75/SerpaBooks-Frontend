@@ -1,0 +1,12 @@
+footer{
+  padding: 1.22rem;
+  text-align: center;
+  background-color: var(--blue-dark-color);
+  color: var(--cream-color);
+  > p{
+    margin-bottom: 0;
+  }
+  > span{
+    font-style: italic;
+  }
+}

@@ -1,0 +1,110 @@
+<section *ngIf="gridList.length>0" >
+  <div  *ngFor="let livro of gridList; let i = index" class="card" (click)="openDetails(livro.idInfoLivro)">
+    <div class="image">
+      <img [src]="livro.urlImagem" alt="">
+    </div>
+    <div class="conteudo">
+      <div class="info">
+        <div class="row">
+          <h4>{{livro.tituloLivro}}</h4>
+        </div>
+        <div class="row">
+          <span class="col-6"><b>{{livro.dataPublicacao}}</b></span>
+          <!-- VALIDAR QUAL É melhor capa, ou idioma<span class="col-6">{{livro.idioma}}</span> -->
+          <span class="col-6">{{livro.descricaoCapa}}</span>
+        </div>
+        <div class="row">
+          <span class="col-6"><b>{{livro.nomeAutor}}</b></span>
+          <span class="col-6">{{livro.nomeEditora}}</span>
+        </div>
+        <div class="row">
+          <p>
+            {{livro.resumo}}
+          </p>
+          <!-- <p *ngIf="livro.resumo != null">
+              {{livro.resumo}}
+            </p> -->
+          <!-- <p *ngIf="livro.sinopse != null && livro.resumo==null">
+              {{livro.sinopse}}
+            </p> -->
+        </div>
+      </div>
+      <div class="nota">
+        <p><b>{{livro.notaLivro}}/5.0</b></p>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section *ngIf="gridList.length < 1">
+  <div class="no-result">
+    <h3>Não foram encontrados livros com essas informações</h3>
+  </div>
+</section>
+
+
+<!--
+<div class="card">
+  <div class="image">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/81iqH8dpjuL._AC_UL600_SR600,400_.jpg" alt="">
+  </div>
+  <div class="conteudo">
+    <div class="info">
+      <div class="row">
+        <h4>A Biblioteca da Meia-Noite</h4>
+      </div>
+      <div class="row">
+        <span class="col-6"><b>27/09/2021</b></span>
+         VALIDAR QUAL É melhor capa, ou idioma<span class="col-6">Português</span>
+        <span class="col-6">Capa comum</span>
+      </div>
+      <div class="row">
+        <span class="col-6"><b>Matt Haig</b></span>
+        <span class="col-6">Bertrand Brasil</span>
+      </div>
+      <div class="row">
+        <p>
+          A Biblioteca da Meia-Noite é um romance incrível que fala dos infinitos rumos que a vida pode tomar e da busca
+          incessante pelo rumo certo.
+        </p>
+      </div>
+    </div>
+    <div class="nota">
+      <p><b>4.7/5.0</b></p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="image">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/81eT2pjx4jL._AC_UL600_SR600,400_.jpg" alt="">
+  </div>
+  <div class="conteudo">
+    <div class="info">
+      <div class="row">
+        <h4>Hábitos atômicos: um método fácil e comprovado de criar bons hábitos e se livrar dos maus</h4>
+      </div>
+      <div class="row">
+        <span class="col-6"><b>08/08/2019</b></span>
+         VALIDAR QUAL É melhor capa, ou idioma<span class="col-6">Português</span>
+        <span class="col-6">Capa comum</span>
+      </div>
+      <div class="row">
+        <span class="col-6"><b>James Clear</b></span>
+        <span class="col-6">Alta Life</span>
+      </div>
+      <div class="row">
+        <p>
+          BEST-SELLER DO NEW YORK TIMES.
+        </p>
+      </div>
+    </div>
+    <div class="nota">
+      <p><b>4.8/5.0</b></p>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let item of gridList">
+    <p>{{item.tituloLivro}}</p>
+</div> -->

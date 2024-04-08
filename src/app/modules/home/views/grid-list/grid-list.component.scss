@@ -1,0 +1,40 @@
+
+main{
+  display: flex;
+  gap: 2rem;
+
+
+  h4{
+    color: var(--blue-dark-color);
+    text-align: center;
+  }
+
+  .filters{
+    position: fixed;
+    height: 15rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    padding: 1.5rem;
+    margin: 1.7rem 0.25rem 1.7rem 0.5rem;
+    width: 22%;
+    max-width: 22%;
+    border: 1px solid #e7e5bf;;
+
+    label{
+      color: var(--blue-dark-color);
+    }
+
+  }
+  .list{
+    margin-left: 24%;
+    width: 60%;
+    max-width: 60%;
+
+    > span{
+      margin: 0.25rem;
+      color: #696c75;
+    }
+
+  }
+
+}

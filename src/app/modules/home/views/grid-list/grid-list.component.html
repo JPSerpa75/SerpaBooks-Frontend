@@ -1,1 +1,36 @@
-<p>grid-list works!</p>
+<main>
+  <div class="filters">
+    <h4>Filtros</h4>
+    <div class="row">
+      <label for="">Editora</label>
+      <ng-select
+        [items]="editoras"
+        bindLabel="nomeEditora"
+        bindValue="id"
+        [multiple]="true"
+        placeholder="Selecione editoras"
+        [(ngModel)]="editorasIdsSelected"
+        (change)="handleEditora($event)"
+        >
+      </ng-select>
+    </div>
+    <div class="row mt-3">
+      <label for="">Autor</label>
+      <ng-select
+      [items]="autores"
+      bindLabel="nomeAutor"
+      bindValue="id"
+      [multiple]="true"
+      placeholder="Selecione autores"
+      [(ngModel)]="autoresIdsSelected"
+      (change)="handleAutor($event)"
+      >
+    </ng-select>
+    </div>
+  </div>
+  <div class="list">
+    <span>Total de livros encontrados: {{total}}</span>
+    <app-card-book [gridList]="infoLivroGridList"></app-card-book>
+    <app-pagination *ngIf="total > 10" [total]="total" [currentPage]="currentPage" [pageSize]="pageSize" (changePage)="changePage($event)"></app-pagination>
+  </div>
+</main>
