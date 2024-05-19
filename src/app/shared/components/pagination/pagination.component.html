@@ -1,13 +1,14 @@
 <ul class="pagination">
-  <span class="begin-end" *ngIf="currentPage>2 && pagesQtd.length>3 && currentPage!= 0" (click)="setPage(0)">Início</span>
-  <li
-     *ngFor="let page of pagesQtd"
-     [ngClass]="{ 'page-item': true, active: currentPage === page - 1 }"
-     (click)="changePage.emit(page - 1)"
-     tabindex=""
-     (keypress)="changePage.emit(page - 1)"
-  >
-     <span class="page-link" *ngIf="currentPage+1 == page || currentPage+3 == page || currentPage + 2 == page || currentPage-1 == page || currentPage== page">{{ page }}</span>
+  <span class="begin-end" *ngIf="currentPage>2 && pagesQtd.length>3 && currentPage!= 0" (click)="setPage(0)">1</span>
+  <span class="reticencias" *ngIf="currentPage>2 && pagesQtd.length>3 && currentPage!= 0">...</span>
+  <li *ngFor="let page of pagesQtd" [ngClass]="{ 'page-item': true, active: currentPage === page - 1 }"
+    (click)="changePage.emit(page - 1)" tabindex="" (keypress)="changePage.emit(page - 1)">
+    <span class="page-link"
+      *ngIf="currentPage+1 == page || currentPage+3 == page || currentPage + 2 == page || currentPage-1 == page || currentPage== page">{{
+      page }}</span>
   </li>
-  <span class="begin-end" *ngIf="currentPage+3 < pagesQtd.length && pagesQtd.length>3 && currentPage != pagesQtd.length-1" (click)="setPage(pagesQtd.length-1)">Ultimo</span>
+  <span class="reticencias" *ngIf="currentPage+3 < pagesQtd.length && pagesQtd.length>3 && currentPage != pagesQtd.length-1">...</span>
+  <span class="begin-end"
+    *ngIf="currentPage+3 < pagesQtd.length && pagesQtd.length>3 && currentPage != pagesQtd.length-1"
+    (click)="setPage(pagesQtd.length-1)">{{pagesQtd.length}}</span>
 </ul>

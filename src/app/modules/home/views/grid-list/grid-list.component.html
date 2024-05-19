@@ -11,6 +11,7 @@
         placeholder="Selecione editoras"
         [(ngModel)]="editorasIdsSelected"
         (change)="handleEditora($event)"
+        [virtualScroll]="true"
         >
       </ng-select>
     </div>
@@ -24,6 +25,7 @@
       placeholder="Selecione autores"
       [(ngModel)]="autoresIdsSelected"
       (change)="handleAutor($event)"
+      [virtualScroll]="true"
       >
     </ng-select>
     </div>

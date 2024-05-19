@@ -1,0 +1,48 @@
+.content {
+  padding: 2rem;
+  color: var(--blue-dark-color);
+  background-color: var(--cream-color);
+
+  p {
+    font-size: large;
+    font-weight: 700;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+
+    button {
+      width: fit-content;
+    }
+
+    .back {
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--cream-color);
+      border: 1px solid var(--blue-dark-color);
+      color: var(--blue-dark-color);
+      font-weight: 600;
+
+      &:hover {
+        transition: 0.2s;
+        background-color: #b9b89e;
+      }
+    }
+
+    .rating {
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--blue-dark-color);
+      border: none;
+      color: var(--cream-color);
+      font-weight: 600;
+
+      &:hover {
+        transition: 0.2s;
+        background-color: var(--blue-real-color);
+      }
+    }
+  }
+}

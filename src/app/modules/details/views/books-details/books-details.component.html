@@ -1,3 +1,161 @@
-<p>books-details works!</p>
+<section>
+  <a class="btn-voltar" routerLink="/">Voltar</a>
+  <div class="content">
+    <div class="info" *ngIf="!!infoLivro && !!livroFisico">
+      <img [src]="livroFisico.urlImagem" alt="Capa do livro" />
+      <div class="info-livro">
+        <h3>{{ infoLivro.titulo }}</h3>
+        <div class="rating-geral">
+          <div class="rating-info">
+            <span>
+              <ng-template #t let-fill="fill">
+                <i class="bi-star-fill">
+                  @if (fill > 0) {
+                  <i class="bi-star-fill filled" [style.width.%]="fill"></i>
+                  }
+                </i>
+              </ng-template>
 
-<button class="primary" (click)="navigateToList()">Ir para lista</button>
+              <ngb-rating
+                [(rate)]="infoLivro.notaLivro"
+                [starTemplate]="t"
+                [readonly]="true"
+                [max]="5"
+              />
+            </span>
+            <div *ngIf="!!infoLivro.notaLivro">{{ infoLivro.notaLivro }}</div>
+            <div *ngIf="!infoLivro.notaLivro">0</div>
+            /5.0
+          </div>
+          <button (click)="newRating()">
+            <img src="/assets/imgs/star-icon-gray.svg" alt="Estrela" />
+            <span>Avaliar</span>
+          </button>
+        </div>
+        <p>
+          Editora <span>{{ livroFisico.editora.nomeEditora }}</span>
+        </p>
+        <p>
+          Autor <span>{{ infoLivro.autor.nomeAutor }}</span>
+        </p>
+        <p>
+          <b>{{ infoLivro.resumo }}</b>
+        </p>
+      </div>
+      <div class="best-price" *ngIf="listaPrecos.length > 0">
+        <p>
+          Melhor Preço <span>{{ listaPrecos[0].store }}</span>
+        </p>
+        <p>
+          R$ {{ listaPrecos[0].preco.toFixed(2).toString().replace(".", ",") }}
+        </p>
+        <a target="_blank" [href]="listaPrecos[0].link">Ir para loja</a>
+      </div>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li *ngIf="listaPrecos.length > 0">
+          <a [href]="'details/' + idInfoLivro + '#list-price'"
+            >Comparar preços</a
+          >
+        </li>
+        <li *ngIf="avaliacoes.length > 0">
+          <a [href]="'details/' + idInfoLivro + '#list-rating'">Avaliações</a>
+        </li>
+        <li *ngIf="!!livroFisico && !!infoLivro">
+          <a [href]="'details/' + idInfoLivro + '#other-infos'"
+            >Mais informações</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <section id="list-price" class="list-price" *ngIf="listaPrecos.length > 0">
+      <div class="store" *ngFor="let store of listaPrecos; let i = index">
+        <img [src]="store.img" alt="Capa do livro" />
+        <div class="price">
+          <h4>R$ {{ store.preco.toFixed(2).toString().replace(".", ",") }}</h4>
+          <p *ngIf="!!store.capa">{{ store.capa.descricaoCapa }}</p>
+          <p *ngIf="!store.capa">{{ livroFisico?.capa?.descricaoCapa }}</p>
+        </div>
+        <div class="link">
+          <img
+            *ngIf="store.store === 'Amazon Kindle'"
+            class="img-pequena"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Amazon_Kindle_logo.svg/2560px-Amazon_Kindle_logo.svg.png"
+            alt="Logo do kindle"
+          />
+          <img
+            *ngIf="store.store === 'Amazon'"
+            src="https://logosmarcas.net/wp-content/uploads/2020/04/Amazon-Logo.png"
+            alt="Logo da amazon"
+          />
+          <img
+            *ngIf="store.store === 'Magalu'"
+            class="maguluimg"
+            src="/assets/imgs/logo-magalu.png"
+            alt="Logo da magulu"
+          />
+          <img
+            *ngIf="store.store === 'Mercado Livre'"
+            class="img-pequena"
+            src="/assets/imgs/logo-mercado-livre.png"
+            alt="Logo do mercado livre"
+          />
+          <a target="_blank" [href]="store.link">Ir a loja</a>
+        </div>
+      </div>
+    </section>
+    <section id="list-rating" class="list-rating" *ngIf="avaliacoes.length > 0">
+      <div
+        class="rating-item"
+        *ngFor="let avaliacao of avaliacoes; let i = index"
+      >
+        <div class="user">
+          <img src="/assets/imgs/user-icon-2.png" alt="" />
+          <span>{{ avaliacao.usuario.nomeUsuario }}</span>
+          <p>{{ avaliacao.dataAvaliacao | date : "dd/MM/yyyy HH:mm" }}</p>
+        </div>
+
+        <div class="rating">
+          <span>
+            <star-rating
+              [(ratingValue)]="avaliacao.valorAvaliacao"
+              [onlyView]="true"
+            ></star-rating>
+          </span>
+        </div>
+        <p>{{ avaliacao.descricaoAvaliacao }}</p>
+      </div>
+    </section>
+    <button class="btn-rating" (click)="newRating()">
+      <img src="/assets/imgs/star-icon-gray.svg" alt="Estrela" />
+      <span>Avaliar Livro</span>
+    </button>
+    <section
+      id="other-infos"
+      class="other-infos"
+      *ngIf="!!infoLivro && !!livroFisico"
+    >
+      <p>
+        Publicado em
+        <span>{{ livroFisico.dataPublicacao | date : "dd/MM/yyyy" }}</span>
+      </p>
+      <p>
+        Versão <span>{{ livroFisico.capa.descricaoCapa }}</span> com
+        <span>{{ livroFisico.numeroPaginas }}</span> páginas
+      </p>
+      <p *ngIf="!!infoLivro.resumo">
+        <b>Resumo</b>
+        {{ infoLivro.resumo }}
+      </p>
+      <p *ngIf="!!infoLivro.sinopse">
+        <b>Sinopse</b>
+        {{ infoLivro.sinopse }}
+      </p>
+    </section>
+    <button class="btn-edit" (click)="openEditInfo()">
+      <i class="bi bi-pencil-square"></i>
+      <span class="ms-2">Editar informações</span>
+    </button>
+  </div>
+</section>

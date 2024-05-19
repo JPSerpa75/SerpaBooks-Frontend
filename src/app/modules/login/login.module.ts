@@ -7,6 +7,8 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
 import { NewUserComponent } from './views/new-user/new-user.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../../shared/shared.module';
+import { AuthenticationStore } from '../../stores/authentication-store';
 
 
 
@@ -22,6 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     LoginRoutingModule,
     HttpClientModule,
+  ],
+  providers: [
+    AuthenticationStore
   ]
 })
 export class LoginModule { }

@@ -1,0 +1,37 @@
+<section class="content">
+  <header>
+    <h5>Editar infomações do Livro</h5>
+  </header>
+  <form class="form" [formGroup]="form">
+    <div class="row">
+      <label for="resumo">Resumo</label>
+      <textarea
+        id="resumo"
+        rows="8"
+        formControlName="resumo"
+        placeholder="Escreva o resumo do livro"
+        maxlength="500"
+      ></textarea>
+      <span class="error" *ngIf="isNotValid('resumo')">
+        Escreva um resumo
+      </span>
+    </div>
+    <div class="row">
+      <label for="sinopse">Sinopse</label>
+      <textarea
+        id="sinopse"
+        rows="13"
+        formControlName="sinopse"
+        placeholder="Escreva a sinopse do livro"
+        maxlength="2000"
+      ></textarea>
+      <span class="error" *ngIf="isNotValid('sinopse')">
+        Escreva uma sinopse
+      </span>
+    </div>
+    <div class="row buttons">
+      <button class="back" (click)="goBack()">Voltar</button>
+      <button class="rating" (click)="update()">Salvar</button>
+    </div>
+  </form>
+</section>

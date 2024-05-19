@@ -1,0 +1,31 @@
+<section class="content">
+  <header>
+    <h5>Deixe sua opnião sobre o livro</h5>
+  </header>
+  <form [formGroup]="form">
+    <div class="row star-rating">
+      <ngb-rating [(rate)]="nota" [max]="5">
+        <ng-template let-fill="fill" let-index="index">
+          <i class="bi-star-fill" [class.filled]="fill === 100"></i>
+        </ng-template>
+      </ngb-rating>
+    </div>
+    <div class="row description">
+      <textarea
+        id=""
+        cols="30"
+        rows="6"
+        formControlName="descricao"
+        placeholder="Escreva uma breve descrição sobre sua avaliação"
+        maxlength="255"
+      ></textarea>
+      <span class="error" *ngIf="isNotValid('descricao')">
+        Escreva uma descrição
+      </span>
+    </div>
+    <div class="row buttons">
+      <button class="back" (click)="goBack()">Voltar</button>
+      <button class="rating" (click)="avaliar()">Avaliar</button>
+    </div>
+  </form>
+</section>

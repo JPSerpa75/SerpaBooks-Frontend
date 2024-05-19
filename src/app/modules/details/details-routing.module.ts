@@ -4,7 +4,7 @@ import { BooksDetailsComponent } from './views/books-details/books-details.compo
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':idInfoLivro',
     component: BooksDetailsComponent,
   },
 ];

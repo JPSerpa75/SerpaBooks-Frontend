@@ -9,12 +9,10 @@ import { InfoLivroStore } from '../../stores/info-livro-store';
 import { SharedModule } from '../../shared/shared.module';
 import { EditoraStore } from '../../stores/editora-store';
 import { AutorStore } from '../../stores/autor-store';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    GridListComponent,
-    CardBookComponent
-  ],
+  declarations: [GridListComponent, CardBookComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,11 +20,8 @@ import { AutorStore } from '../../stores/autor-store';
     HomeRoutingModule,
     NgSelectModule,
     SharedModule,
+    NgbRatingModule,
   ],
-  providers:[
-    InfoLivroStore,
-    EditoraStore,
-    AutorStore
-  ]
+  providers: [InfoLivroStore, EditoraStore, AutorStore],
 })
-export class HomeModule { }
+export class HomeModule {}

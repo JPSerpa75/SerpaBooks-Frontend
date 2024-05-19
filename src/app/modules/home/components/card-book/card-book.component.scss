@@ -1,19 +1,16 @@
-
-section{
+section {
   margin-top: 0.25rem;
 
-  .no-result{
+  .no-result {
     padding: 1rem;
     text-align: center;
-    h3{
-
+    h3 {
       color: var(--blue-real-color);
     }
   }
-
 }
 
-.card{
+.card {
   margin: 0 0.25rem 1.5rem 0.25rem;
   display: flex;
   flex-direction: row;
@@ -23,35 +20,34 @@ section{
   background-color: var(--cream-color);
   border: 1px solid #d4d3b6;
   gap: 1rem;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 
-  .image{
-    img{
+  .image {
+    img {
       border-color: transparent;
       width: 8rem;
       height: 12rem;
       background-position: center;
       object-fit: cover;
     }
-
   }
-  .conteudo{
+  .conteudo {
     width: 100%;
     display: flex;
     justify-content: space-between;
 
-    .info{
-
-      h4{
+    .info {
+      h4 {
         color: var(--blue-dark-color);
       }
 
-      span{
+      span {
         color: var(--gray-color);
         font-size: 1rem;
       }
 
-      p{
+      p {
         height: 4.5rem;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -64,19 +60,39 @@ section{
       }
     }
 
-    .nota{
+    .nota {
       color: var(--blue-dark-color);
       font-size: 2rem;
       align-self: center;
+      text-align: center;
+
+      i {
+        position: relative;
+        display: inline-block;
+        font-size: 3.5rem;
+        padding-right: 0.1rem;
+        color: var(--gray-color);
+      }
+
+      .filled {
+        color: var(--yellow);
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      p {
+        margin-top: -1rem;
+      }
     }
-
   }
-
 }
 
-.card:hover{
-  background-color: #FFFDD9;
+.card:hover {
+  background-color: #fffdd9;
   transition: 1s;
   cursor: pointer;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(24, 24, 51, 0.829) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(24, 24, 51, 0.829) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }

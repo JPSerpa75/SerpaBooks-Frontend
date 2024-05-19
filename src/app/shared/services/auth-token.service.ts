@@ -6,61 +6,84 @@ import { TokenData } from '../models/token-data.model';
 import { DOCUMENT } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthTokenService {
+  decodedToken$!: Observable<TokenData>;
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router
+  ) {}
 
-  decodedToken$!: Observable<TokenData>
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
-
-  localStorage = this.document.defaultView?.localStorage
+  localStorage = this.document.defaultView?.localStorage;
 
   getToken() {
-    if(this.localStorage){
-      return this.localStorage.getItem('token')
+    if (this.localStorage) {
+      return this.localStorage.getItem('token');
     }
-    return null
+    return null;
   }
 
   getIdUsuario() {
-     return this.decodePayloadJWT()?.decode.id
+    return this.decodePayloadJWT()?.decode.id;
   }
 
   getNomeUsuario() {
-     const name = this.decodePayloadJWT()?.decode.nome
-     if (!name) return ''
-     const splittedName = name.split(' ')
+    const name = this.decodePayloadJWT()?.decode.nome;
+    if (!name) return '';
+    const splittedName = name.split(' ');
 
-     return `${splittedName[0]} ${splittedName.length >= 2 ? splittedName.pop() : ''}`
+    return `${splittedName[0]} ${
+      splittedName.length >= 2 ? splittedName.pop() : ''
+    }`;
   }
 
   logout() {
-    if(this.localStorage){
-      this.localStorage.removeItem('token')
-      this.decodedToken$ = {} as Observable<TokenData>
+    if (this.localStorage) {
+      this.localStorage.removeItem('token');
+      this.decodedToken$ = {} as Observable<TokenData>;
     }
-    return null
+    return null;
+  }
+
+  isTokenValid() {
+    const token = this.getToken();
+
+    if (token) {
+      const helper = new JwtHelperService();
+
+      const isExpired = helper.isTokenExpired(this.getToken());
+
+      if (isExpired) {
+        return null;
+      }
+    }
+    return token;
   }
 
   decodePayloadJWT() {
-     const token = this.getToken()
+    const token = this.getToken();
 
-     if (token) {
-        const helper = new JwtHelperService()
+    if (token) {
+      const helper = new JwtHelperService();
 
-        const decodedToken = helper.decodeToken(token)
-        const expirationDate = helper.getTokenExpirationDate(token)
-        const isExpired = helper.isTokenExpired(this.getToken())
+      const decodedToken = helper.decodeToken(token);
+      const expirationDate = helper.getTokenExpirationDate(token);
+      const isExpired = helper.isTokenExpired(this.getToken());
 
-        if (isExpired) {
-           this.router.navigateByUrl('/')
-           return null
-        }
-        this.decodedToken$ = of(decodedToken)
-        return { decode: decodedToken, expire: expirationDate, isExpired: isExpired }
-     } else {
-        this.router.navigateByUrl('/')
-        return null
-     }
+      if (isExpired) {
+        this.router.navigateByUrl('/');
+        return null;
+      }
+      this.decodedToken$ = of(decodedToken);
+      return {
+        decode: decodedToken,
+        expire: expirationDate,
+        isExpired: isExpired,
+      };
+    } else {
+      this.router.navigateByUrl('/');
+      return null;
+    }
   }
 }
